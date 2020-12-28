@@ -4,18 +4,23 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "dev": "gatsby develop",
+    "build": "cross-env NODE_ENV=production gatsby build",
+    "dev": "cross-env NODE_ENV=development gatsby develop",
     "clean": "gatsby clean",
     "proxy": "netlify-cms-proxy-server"
   },
   "dependencies": {
     "@narative/gatsby-theme-novela": "^0.*",
+    "contentful": "^8.1.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.13.41",
+    "gatsby-plugin-advanced-sitemap": "^1.5.6",
+    "gatsby-plugin-html-attributes": "^1.0.5",
     "gatsby-plugin-manifest": "^2.2.4",
-    "gatsby-plugin-netlify-cms": "^4.1.40",
-    "netlify-cms-app": "^2.11.23",
-    "netlify-cms-proxy-server": "^1.1.4",
+    "gatsby-plugin-sharp": "^2.11.2",
+    "gatsby-source-contentful": "^4.3.1",
+    "gatsby-transformer-sharp": "^2.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }

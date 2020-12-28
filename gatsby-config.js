@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: ".env",
+});
+
 module.exports = {
   siteMetadata: {
     title: `Novela by Narative`,
@@ -33,16 +37,26 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+    {
       resolve: "@narative/gatsby-theme-novela",
       options: {
-        contentPosts: "content/posts",
-        contentAuthors: "content/authors",
-        basePath: "/",
-        authorsPage: true,
         sources: {
-          local: true,
-          // contentful: true,
+          contentful: true,
+          local: false,
         },
+      },
+    },
+    "gatsby-plugin-advanced-sitemap",
+    {
+      resolve: "gatsby-plugin-html-attributes",
+      options: {
+        lang: "pt-BR",
       },
     },
     {
@@ -55,11 +69,6 @@ module.exports = {
         theme_color: `#fff`,
         display: `standalone`,
         icon: `src/assets/favicon.png`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-netlify-cms`,
-      options: {
       },
     },
   ],
